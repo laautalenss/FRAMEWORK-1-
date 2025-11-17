@@ -14,6 +14,7 @@
             if(empty(Campo::val($this->nombre)))
             {
                 $this->error = True;
+                Formulario::$numero_errores++;
             }
         }
 

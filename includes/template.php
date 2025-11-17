@@ -49,14 +49,10 @@
             $template = new Template();
 
             return $template->render('navegacion',[
-                'casa' => Idioma::lit('casa'),
-                'acercade' => Idioma::lit('acercade'),
-                'contacto' => Idioma::lit('contacto'),
-                'precio' => Idioma::lit('precio'),
-                'ES' => 'ES',
-                'EN' => 'EN',
-                'usuarios' => Idioma::lit('usuarios'),
-                'FAQ' => 'FAQ'
+                'portfolio' => Idioma::lit('portfolio')
+               ,'acercade'  => Idioma::lit('acercade')
+               ,'contacto'  => Idioma::lit('contacto')
+               ,'usuarios'  => Idioma::lit('usuarios')
             ]);
 
         }
