@@ -1,6 +1,6 @@
 #\. /var/www/html/lanzarote.lan/tablas/create_table_usuarios.sql
 
-DROP TABLE IF EXISTS usuarios;
+DROP TABLE usuarios;
 CREATE TABLE usuarios(
      id            INT NOT NULL AUTO_INCREMENT PRIMARY KEY
     ,nick          VARCHAR(255) NOT NULL

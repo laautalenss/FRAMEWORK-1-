@@ -8,7 +8,7 @@
         private string $host     = '127.0.0.1';
         private string $usuario  = 'lanzarote';
         private string $password = 'lanza.pass';
-        private string $baseDatos = 'lanzarote';
+        public  static string $baseDatos = 'lanzarote';
 
         private function __construct()
         {
@@ -16,13 +16,12 @@
                  $this->host
                 ,$this->usuario
                 ,$this->password
-                ,$this->baseDatos
+                ,self::$baseDatos
             );
-            
-        if($this->conexion->connect_error){
-            die("❌ Error de conexión MySQL (" . $this->conexion->connect_errno . "): " . $this->conexion->connect_error);
-        }
 
+            if($this->conexion->connect_error){
+                die("Error de conexión: " . $this->conexion->connect_error);
+            }
 
             $this->conexion->set_charset("utf8mb4");
         }

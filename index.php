@@ -2,6 +2,8 @@
 
     require "includes/general.php";
 
+
+
     echo Template::header('Biblioteca');
     echo Template::nav();
 
