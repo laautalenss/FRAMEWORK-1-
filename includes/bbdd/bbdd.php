@@ -28,7 +28,7 @@
         private string $host     = '127.0.0.1';
         private string $usuario  = 'zonzamas';
         private string $password = 'Csas1234!';
-        private string $baseDatos = 'gestion_usuarios';
+        public static string $baseDatos = 'gestion_usuarios';
 
         //Constructor privado para evitar crear nuevas instancias desde fuera de la clase
         private function __construct(){
@@ -39,7 +39,7 @@
                  $this->host,
                  $this->usuario,
                  $this->password,
-                 $this->baseDatos
+                 self::$baseDatos
             );
 
             //Si hay error de conexión, mostramos el error y detenemos la ejecución (die)
