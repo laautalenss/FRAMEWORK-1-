@@ -10,10 +10,10 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                 <!-- Enlaces principales -->
-                <li class="nav-item"><a class="nav-link" href="index.php">{{ casa }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?seccion=about">{{ acercade }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?seccion=contact">{{ contacto }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?seccion=pricing">{{ precio }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/casa/">{{ casa }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about/">{{ acercade }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact/">{{ contacto }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pricing/">{{ precio }}</a></li>
 
                 <!-- Cambio de idioma -->
                 <li class="nav-item"><a class="nav-link" href="/?lang=es">{{ ES }}</a></li>
@@ -21,12 +21,12 @@
 
                 <!-- Sección usuarios usando la lógica del profesor -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?seccion=usuarios">{{ usuarios }}</a>
+                    <a class="nav-link" href="/usuarios/">{{ usuarios }}</a>
                 </li>
 
 
                 <!-- Otros enlaces -->
-                <li class="nav-item"><a class="nav-link" href="index.php?seccion=faq">{{ FAQ }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/faq/">{{ FAQ }}</a></li>
 
                 <!-- Dropdown Blog -->
                 <li class="nav-item dropdown">
