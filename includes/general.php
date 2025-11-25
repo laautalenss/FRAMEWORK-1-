@@ -71,6 +71,9 @@ spl_autoload_register(function ($class) {
         case 'Usuario':
                 require_once "includes/modelos/usuario.php";
         break;
+        case 'Libro':
+            require_once "includes/modelos/libro.php";
+        break;
 
     }
 });

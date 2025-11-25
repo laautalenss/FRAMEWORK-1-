@@ -17,6 +17,7 @@
                 || strlen(Campo::val($this->nombre)) <= 5
             )
             {
+
                 $this->error = True;
                 Formulario::$numero_errores++;
             }

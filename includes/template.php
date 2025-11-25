@@ -118,7 +118,7 @@
 
         }
 
-        static function navegacion($total_registros, $pagina)
+        static function navegacion_usuarios($total_registros, $pagina)
         {
             $pagina_siguiente = ($total_registros == LISTADO_TOTAL_POR_PAGINA)?  "<li class=\"page-item\"><a class=\"page-link\" href=\"/usuarios/{$pagina}\">Siguiente</a></li>" : '';
             $pagina_anterior  = ($pagina != 1)? "<li class=\"page-item\"><a class=\"page-link\" href=\"/usuarios/". ($pagina-2) ."\">Anterior</a></li>" : '';
@@ -134,6 +134,22 @@
 
 
 
-        }
+        }    
+        
+        static function navegacion_libros($total_registros, $pagina)
+        {
+            $pagina_siguiente = ($total_registros == LISTADO_TOTAL_POR_PAGINA)?  "<li class=\"page-item\"><a class=\"page-link\" href=\"/libros/{$pagina}\">Siguiente</a></li>" : '';
+            $pagina_anterior  = ($pagina != 1)? "<li class=\"page-item\"><a class=\"page-link\" href=\"/libros/". ($pagina-2) ."\">Anterior</a></li>" : '';
+
+            return "
+                <nav>
+                    <ul class=\"pagination\">
+                        {$pagina_anterior}
+                        {$pagina_siguiente}
+                    </ul>
+                </nav>
+            ";
+
+    }
 
     }

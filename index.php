@@ -1,19 +1,42 @@
 <?php
-
-error_reporting(E_ERROR);
-ini_set('display_errors', 1);
-
+    error_reporting(E_ERROR);
+    ini_set('display_errors', 1);
 
     require "includes/general.php";
 
-    echo Template::header('Biblioteca');
-    echo Template::nav();
 
-    echo Template::seccion(Campo::val('seccion'));
+    if (Campo::val('modo') == 'ajax')
+    {
+
+        header('Content-Type: application/json');
+
+        $salida = [];
+ 
+        $salida['titulo'] = Idioma::lit('titulo'.Campo::val('oper'))." ". Idioma::lit(Campo::val('seccion'));
+        $salida['contenido'] = Template::seccion(Campo::val('seccion'));
+
+        echo json_encode($salida);
+    }
+    else
+    {
+
+        echo Template::header(Idioma::lit('title_'.Campo::val('seccion')));
+        echo Template::nav();
+        echo Template::seccion(Campo::val('seccion'));
+    }
 
 
-    echo Template::footer(); 
+    
+
+    
+
+
+    if (Campo::val('modo') != 'ajax')
+    {
+        echo Template::footer(); 
+    }
     
     
 ?>
+
 

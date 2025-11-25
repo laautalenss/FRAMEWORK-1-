@@ -12,7 +12,6 @@ class UsuarioController
     static function pintar()
     {
         $contenido = '';
-        $volver = "<a style=\"float:right\" href=\"/usuarios/\" class=\"btn btn-light\"><i class=\"bi bi-arrow-return-left\"></i> ".Idioma::lit('volver')."</a>";
 
 
 
@@ -40,15 +39,17 @@ class UsuarioController
         }
 
       
-        
+        if (Campo::val('modo') != 'ajax')
+        {
+            $h1cabecera = "<h1>". Idioma::lit('titulo'.Campo::val('oper'))." ". Idioma::lit(Campo::val('seccion')) ."</h1>";
+        }  
 
       
         return "
         <div class=\"container contenido\">
         <section class=\"page-section usuarios\" id=\"usuarios\">
-            <h1>". Idioma::lit('titulo'.Campo::val('oper'))." ". Idioma::lit(Campo::val('seccion')) ."</h1>
+            {$h1cabecera}
             {$contenido}
-            {$volver}
         </section>
         </div>
         
@@ -260,9 +261,9 @@ class UsuarioController
         {
 
             $botonera = "
-                <a href=\"/usuarios/cons/{$registro['id']}\" class=\"btn btn-secondary\"><i class=\"bi bi-search\"></i></a>
-                <a href=\"/usuarios/modi/{$registro['id']}\" class=\"btn btn-primary\"><i class=\"bi bi-pencil-square\"></i></a>
-                <a href=\"/usuarios/baja/{$registro['id']}\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></a>
+                <a onclick=\"fetchJSON('/usuarios/cons/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-secondary\"><i class=\"bi bi-search\"></i></a>
+                <a onclick=\"fetchJSON('/usuarios/modi/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-primary\"><i class=\"bi bi-pencil-square\"></i></a>
+                <a onclick=\"fetchJSON('/usuarios/baja/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></a>
             ";
 
             $listado_usuarios .= "
@@ -281,7 +282,7 @@ class UsuarioController
         }
 
 
-        $barra_navegacion = Template::navegacion($total_registros,$pagina);
+        $barra_navegacion = Template::navegacion_usuarios($total_registros,$pagina);
 
 
         return "

@@ -10,7 +10,6 @@ class Elemento
         $this->literal_error = empty($datos['literal_error'])  ? ''    : $datos['literal_error'];
         $this->style_error   = empty($datos['style_error'])    ? ''    : $datos['style_error'];
         $this->disabled      = empty($datos['disabled'])       ? ''    : $datos['disabled'];
-       
         $this->esqueleto     = is_null($datos['esqueleto'])    ? True  : $datos['esqueleto'];
     }
 

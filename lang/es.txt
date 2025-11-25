@@ -25,7 +25,6 @@ email:E-mail
 valor_obligatorio:Campo obligatorio
 operacion_exito:Operación realizada con éxito
 usuarios:Usuarios
-volver:Volver
 casa:Casa
 precio:Precio 
 ES:ES 
@@ -33,9 +32,22 @@ EN:EN
 FAQ:FAQ
 libros:Libros
 libro:Libro
+autor:Autor 
+isbn:ISBN 
+genero:Genero 
+fecha_publicacion:Fecha Publicacion 
+volver:Volver
+title_usuarios:Gestión de Usuarios
 
 
 placeholdernombre:Inserta un nombre...
 placeholderapellidos:Inserta tus apellidos...
 placeholderemail:Inserta un E-mail válido...
 
+
+
+placeholderlistado:Inserta un titulo...
+placeholdergenero:Inserta un genero...
+placeholderautor:Inserta un autor...
+placeholdertitulo:Inserta un titulo...
+placeholderfecha_publicacion:Inserta una fecha de publicacion...
