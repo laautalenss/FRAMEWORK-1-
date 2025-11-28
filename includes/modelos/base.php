@@ -36,7 +36,7 @@ class Base
 
         $query = new Query("
             SELECT * 
-            FROM '". $this->tabla ."'
+            FROM ". $this->tabla ."
             WHERE id = '{$id}'
         ");
         $registro = $query->recuperar();
@@ -82,7 +82,7 @@ class Base
         $updates = '';
         foreach($datos as $clave => $valor)
         {
-            $updates = "{$clave} = '{$valor}',";
+            $updates .= "{$clave} = '{$valor}',";
         }
 
         $sql = "
@@ -93,6 +93,7 @@ class Base
                 ,fecha_modi = now()
             WHERE id = '{$id}'
         ";
+
 
         $query = new Query($sql);
 

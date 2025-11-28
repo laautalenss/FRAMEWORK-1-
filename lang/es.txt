@@ -3,6 +3,7 @@ adios:adios
 portfolio:Portfolio
 acercade:Acerca de
 contacto:Contacto
+calendario:calendario
 titulo:Listado
 titulolist:Listado
 titulocons:Consulta
@@ -16,6 +17,9 @@ enviarbaja:Baja
 enviarcons:Consulta
 nick:Nick
 placeholdernick:Pseudónimo
+placeholdernombre:Inserta un nombre...
+placeholderapellidos:Inserta tus apellidos...
+placeholderemail:Inserta un E-mail válido...
 password:Contraseña
 nombre:Nombre
 escribe_tu_nombre:Escribe tu nombre...
@@ -26,3 +30,4 @@ valor_obligatorio:Campo obligatorio
 operacion_exito:Operación realizada con éxito
 usuarios:Usuarios
 volver:Volver
+title_usuarios:Gestión de Usuarios
