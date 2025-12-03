@@ -1,18 +1,18 @@
 <?php
 
-define('LISTADO_TOTAL_POR_PAGINA',10);
+define('LISTADO_TOTAL_POR_PAGINA', 10);
 
 define('EREG_VALIDACION_EMAIL', '/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/');
 
 //Devuelve fechas en formato dd/mm/yyyy
-function fmto_fecha($aaaammdd,$separador = '/')
+function fmto_fecha($aaaammdd, $separador = '/')
 {
 
-    $aaaammdd = str_replace('-','',$aaaammdd);
+    $aaaammdd = str_replace('-', '', $aaaammdd);
 
-    $anho = substr($aaaammdd,0,4);
-    $mes  = substr($aaaammdd,4,2);
-    $dia  = substr($aaaammdd,6,2);
+    $anho = substr($aaaammdd, 0, 4);
+    $mes  = substr($aaaammdd, 4, 2);
+    $dia  = substr($aaaammdd, 6, 2);
 
     return "{$dia}{$separador}{$mes}{$separador}{$anho}";
 }
@@ -21,54 +21,53 @@ function fmto_fecha($aaaammdd,$separador = '/')
 
 spl_autoload_register(function ($class) {
 
-    switch($class)
-    {
+    switch ($class) {
         case 'Query':
             require_once "includes/bbdd/query.php";
-        break;
+            break;
         case 'BBDD':
             require_once "includes/bbdd/bbdd.php";
-        break;
+            break;
         case 'Template':
             require_once "includes/template.php";
-        break;
+            break;
         case 'Idioma':
             require_once "includes/idioma.php";
-        break;
+            break;
         case 'PortadaController':
             require_once "includes/paginas/portada.controller.php";
-        break;
+            break;
         case 'UsuarioController':
             require_once "includes/paginas/usuario.controller.php";
-        break;
+            break;
         case 'Campo':
             require_once "includes/campo.php";
-        break;
+            break;
         case 'Elemento':
             require_once "includes/elementos/elemento.php";
-        break;
+            break;
         case 'Text':
             require_once "includes/elementos/text.php";
-        break;
+            break;
         case 'Password':
             require_once "includes/elementos/password.php";
-        break;
+            break;
         case 'Hidden':
             require_once "includes/elementos/hidden.php";
-        break;
+            break;
         case 'IEmail':
             require_once "includes/elementos/iemail.php";
-        break;
+            break;
         case 'Formulario':
             require_once "includes/formulario.php";
-        break;
+            break;
         case 'Base':
-                require_once "includes/modelos/base.php";
-        break;
+            require_once "includes/modelos/base.php";
+            break;
         case 'Usuario':
-                require_once "includes/modelos/usuario.php";
-        break;
-        case 'Calendario':
+            require_once "includes/modelos/usuario.php";
+            break;
+        case 'CalendarioController':
             require_once "includes/paginas/calendario.controller.php";
             break;
     }

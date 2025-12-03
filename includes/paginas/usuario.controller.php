@@ -21,10 +21,6 @@ class UsuarioController
     {
         $contenido = '';
 
-
-
-
-
         self::inicializacion_campos();
 
         switch (Campo::val('oper')) {

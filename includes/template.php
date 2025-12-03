@@ -3,6 +3,8 @@
 class Template
 {
 
+    private $templateDir;
+
     public function __construct($templateDir = 'tpl')
     {
         $this->templateDir = rtrim($templateDir, '/');
