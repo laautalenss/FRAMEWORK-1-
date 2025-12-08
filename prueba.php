@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AJAX Moderno con fetch</title>
+
+        <style type="text/css">
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+
+            #result {
+                margin-top: 20px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                background: #f9f9f9;
+            }
+
+            #loading {
+                display:none;
+                text-align: center;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Ejemplo de AJAX Moderno con fetch</h1>
+
+        <button onclick="fetchJSON()">Cargar Datos JSON</button>
+        <button onclick="fetchText()">Cargar Datos Sin JSON</button>
+
+        <div id="loading">
+            <img src="/img/loading.gif" alt="Cargando..." width="50">
+        </div>
+
+        <div id="result">
+            Aquí se mostrarán los resultados.
+        </div>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>
