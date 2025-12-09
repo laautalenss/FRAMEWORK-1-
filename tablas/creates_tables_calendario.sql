@@ -1,4 +1,3 @@
-
 #\. /var/www/html/lanzarote.lan/tablas/creates_tables_calendario.sql
 
 # ==========================================================
@@ -353,5 +352,3 @@ INSERT INTO horarios (dia, hora_inicio, hora_fin, id_modulo, id_profesor, id_aul
 ('V', '11:15:00', '12:10:00', 17, 4, 4, 'ADMIN', '127.0.0.1'),
 ('V', '12:10:00', '13:05:00', 19, 5, 4, 'ADMIN', '127.0.0.1'), # SER
 ('V', '13:05:00', '14:00:00', 20, 2, 4, 'ADMIN', '127.0.0.1'); # AW
-creates_tables_calendario.sql
-Mostrando creates_tables_calendario.sql.

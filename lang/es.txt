@@ -3,8 +3,6 @@ adios:adios
 portfolio:Portfolio
 acercade:Acerca de
 contacto:Contacto
-calendario:calendario
-login:login
 titulo:Listado
 titulolist:Listado
 titulocons:Consulta
@@ -21,6 +19,7 @@ placeholdernick:Pseudónimo
 placeholdernombre:Inserta un nombre...
 placeholderapellidos:Inserta tus apellidos...
 placeholderemail:Inserta un E-mail válido...
+placeholdercalendario_curso:Selecciona el curso...
 password:Contraseña
 nombre:Nombre
 escribe_tu_nombre:Escribe tu nombre...
@@ -32,3 +31,4 @@ operacion_exito:Operación realizada con éxito
 usuarios:Usuarios
 volver:Volver
 title_usuarios:Gestión de Usuarios
+aula:Aula

@@ -2,53 +2,54 @@
 
 
 if (Campo::val('modo') == 'ajax')
-    define('BOTON_ENVIAR', "<button onclick=\"fetchJSON('/usuarios/" . Campo::val('oper') . "/" . Campo::val('id') . "?modo=ajax','formulario');return false\" class=\"btn btn-primary\">" . Idioma::lit('enviar' . Campo::val('oper')) . "</button>");
-
-
+    define('BOTON_ENVIAR',"<button onclick=\"fetchJSON('/usuarios/".Campo::val('oper')."/". Campo::val('id') ."?modo=ajax','formulario');return false\" class=\"btn btn-primary\">". Idioma::lit('enviar'.Campo::val('oper'))."</button>");
 else
-    define('BOTON_ENVIAR', "<button type=\"submit\" class=\"btn btn-primary\">" . Idioma::lit('enviar' . Campo::val('oper')) . "</button>");
-
-
-
+    define('BOTON_ENVIAR',"<button type=\"submit\" class=\"btn btn-primary\">". Idioma::lit('enviar'.Campo::val('oper'))."</button>");
 
 class UsuarioController
 {
 
-    static $nick, $password, $oper, $id, $paso, $nombre, $apellidos, $email;
+    static $nick,$password,$oper,$id,$paso,$nombre,$apellidos,$email;
 
 
     static function pintar()
     {
         $contenido = '';
 
+
+
+
+
         self::inicializacion_campos();
 
-        switch (Campo::val('oper')) {
+        switch(Campo::val('oper'))
+        {
             case 'cons':
                 $contenido = self::cons();
-                break;
+            break;
             case 'modi':
                 $contenido = self::modi();
-                break;
+            break;
             case 'baja':
                 $contenido = self::baja();
-                break;
+            break;
             case 'alta':
                 $contenido = self::alta();
-                break;
+            break;
             default:
                 $contenido = self::listado();
                 $volver = '';
-                break;
+            break;
         }
 
+      
 
-
-        if (Campo::val('modo') != 'ajax') {
-            $h1cabecera = "<h1>" . Idioma::lit('titulo' . Campo::val('oper')) . " " . Idioma::lit(Campo::val('seccion')) . "</h1>";
+        if (Campo::val('modo') != 'ajax')
+        {
+            $h1cabecera = "<h1>". Idioma::lit('titulo'.Campo::val('oper'))." ". Idioma::lit(Campo::val('seccion')) ."</h1>";
         }
 
-
+      
         return "
         <div class=\"container contenido\">
         <section class=\"page-section usuarios\" id=\"usuarios\">
@@ -58,6 +59,8 @@ class UsuarioController
         </div>
         
         ";
+
+
     }
 
     static function inicializacion_campos()
@@ -79,16 +82,18 @@ class UsuarioController
         Formulario::cargar_elemento(self::$nombre);
         Formulario::cargar_elemento(self::$apellidos);
         Formulario::cargar_elemento(self::$email);
+
     }
 
 
-    static function formulario($boton_enviar = '', $errores = [], $mensaje_exito = '', $disabled = '')
+    static function formulario($boton_enviar='',$errores=[],$mensaje_exito='',$disabled='')
     {
         Formulario::disabled($disabled);
 
-        Campo::val('paso', '1');
+        Campo::val('paso','1');
 
-        return Formulario::pintar('/usuarios/', $boton_enviar, $mensaje_exito);
+        return Formulario::pintar('/usuarios/',$boton_enviar,$mensaje_exito);
+
     }
 
     static function sincro_form_bbdd($registro)
@@ -104,54 +109,63 @@ class UsuarioController
 
         self::sincro_form_bbdd($registro);
 
-        return self::formulario('', [], '', " disabled=\"disabled\" ");
+        return self::formulario('',[],''," disabled=\"disabled\" ");
     }
 
     static function baja()
     {
         $boton_enviar = BOTON_ENVIAR;
         $errores = [];
-        $mensaje_exito = '';
-        $disabled = " disabled=\"disabled\" ";
-        if (!Campo::val('paso')) {
+        $mensaje_exito='';
+        $disabled =" disabled=\"disabled\" ";
+        if(!Campo::val('paso'))
+        {
             $usuario = new Usuario();
             $registro = $usuario->recuperar(Campo::val('id'));
 
             self::sincro_form_bbdd($registro);
-        } else {
+
+        }
+        else
+        {
 
             $usuario = new Usuario();
 
             $datos_actualizar = [];
             $datos_actualizar['fecha_baja'] = date('Ymd');
 
-            $usuario->actualizar($datos_actualizar, Campo::val('id'));
+            $usuario->actualizar($datos_actualizar,Campo::val('id'));
 
             $mensaje_exito = '<p class="centrado alert alert-success" >' . Idioma::lit('operacion_exito') .  '</p>';
 
             $boton_enviar = '';
         }
 
-        return self::formulario($boton_enviar, $errores, $mensaje_exito, $disabled);
+        return self::formulario($boton_enviar,$errores,$mensaje_exito,$disabled);
     }
 
     static function modi()
     {
         $boton_enviar = BOTON_ENVIAR;
         $errores = [];
-        $mensaje_exito = '';
-        $disabled = '';
-        if (!Campo::val('paso')) {
+        $mensaje_exito='';
+        $disabled='';
+        if(!Campo::val('paso'))
+        {
             $usuario = new Usuario();
             $registro = $usuario->recuperar(Campo::val('id'));
 
 
             self::sincro_form_bbdd($registro);
-        } else {
+
+        }
+        else
+        {
 
             $numero_errores = Formulario::validacion();
 
-            if (!$numero_errores) {
+            if(!$numero_errores)
+            {
                 $usuario = new Usuario();
 
                 $datos_actualizar = [];
@@ -161,16 +175,18 @@ class UsuarioController
                 $datos_actualizar['email']     = Campo::val('email');
                 $datos_actualizar['password']  = Campo::val('password');
 
-                $usuario->actualizar($datos_actualizar, Campo::val('id'));
+                $usuario->actualizar($datos_actualizar,Campo::val('id'));
 
                 $mensaje_exito = '<p class="centrado alert alert-success" >' . Idioma::lit('operacion_exito') .  '</p>';
 
-                $disabled = " disabled=\"disabled\" ";
+                $disabled =" disabled=\"disabled\" ";
                 $boton_enviar = '';
             }
+
+
         }
 
-        return self::formulario($boton_enviar, $errores, $mensaje_exito, $disabled);
+        return self::formulario($boton_enviar,$errores,$mensaje_exito,$disabled);
     }
 
     static function alta()
@@ -185,13 +201,15 @@ class UsuarioController
         */
         $boton_enviar = BOTON_ENVIAR;
         $errores = [];
-        $mensaje_exito = '';
-        $disabled = '';
-        if (Campo::val('paso')) {
+        $mensaje_exito='';
+        $disabled='';
+        if(Campo::val('paso'))
+        {
 
             $numero_errores = Formulario::validacion();
 
-            if (!$numero_errores) {
+            if(!$numero_errores)
+            {
                 $nuevo_usuario = [];
                 $nuevo_usuario['nick']      = Campo::val('nick');
                 $nuevo_usuario['nombre']    = Campo::val('nombre');
@@ -202,24 +220,29 @@ class UsuarioController
                 $usuario = new Usuario();
                 $usuario->insertar($nuevo_usuario);
 
-
+              
                 $mensaje_exito = '<p class="centrado alert alert-success" >' . Idioma::lit('operacion_exito') .  '</p>';
 
-                $disabled = " disabled=\"disabled\" ";
+                $disabled =" disabled=\"disabled\" ";
                 $boton_enviar = '';
             }
+
+
         }
 
-        return self::formulario($boton_enviar, $errores, $mensaje_exito, $disabled);
+        return self::formulario($boton_enviar,$errores,$mensaje_exito,$disabled);
+
     }
 
 
     static function listado()
     {
-        if (is_numeric(Campo::val('pagina'))) {
+        if(is_numeric(Campo::val('pagina')))
+        {
             $pagina = Campo::val('pagina');
             $offset = LISTADO_TOTAL_POR_PAGINA * $pagina;
-        } else {
+        }
+        else{
             $offset = '0';
         }
         $pagina++;
@@ -227,24 +250,25 @@ class UsuarioController
         $usuario = new Usuario();
 
         $datos_consulta = $usuario->get_rows([
-            'wheremayor' => [
+             'wheremayor' => [
                 'fecha_baja' => date('Ymd')
-            ],
-            'limit'  => LISTADO_TOTAL_POR_PAGINA,
-            'offset' => $offset
+            ]
+            ,'limit'  => LISTADO_TOTAL_POR_PAGINA
+            ,'offset' => $offset
         ]);
 
+        
 
-        $listado_usuarios = '';
+
+        $listado_usuarios= '';
         $total_registros = 0;
-        foreach ($datos_consulta as $indice => $registro) {
+        foreach($datos_consulta as $indice => $registro)
+        {
 
             $botonera = "
                 <a onclick=\"fetchJSON('/usuarios/cons/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-secondary\"><i class=\"bi bi-search\"></i></a>
                 <a onclick=\"fetchJSON('/usuarios/modi/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-primary\"><i class=\"bi bi-pencil-square\"></i></a>
-                <a onclick=\"fetchJSON('/usuarios/baja/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></a>
-                
-
+                <a href=\"/usuarios/baja/{$registro['id']}\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></a>
             ";
 
             $listado_usuarios .= "
@@ -254,8 +278,8 @@ class UsuarioController
                     <td>{$registro['nombre']}</td>
                     <td>{$registro['apellidos']}</td>
                     <td>{$registro['email']}</td>
-                    <td>" . fmto_fecha($registro['fecha_alta']) . "</td>
-                    <td>" . fmto_fecha($registro['fecha_baja']) . "</td>
+                    <td>". fmto_fecha($registro['fecha_alta']) . "</td>
+                    <td>". fmto_fecha($registro['fecha_baja']) . "</td>
                 </tr>
             ";
 
@@ -263,7 +287,7 @@ class UsuarioController
         }
 
 
-        $barra_navegacion = Template::navegacion($total_registros, $pagina);
+        $barra_navegacion = Template::navegacion($total_registros,$pagina);
 
 
         return "
@@ -284,8 +308,11 @@ class UsuarioController
             </tbody>
             </table>
             {$barra_navegacion}
-
-            <a onclick=\"fetchJSON('/usuarios/alta/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-primary\"><i class=\"bi bi-file-earmark-plus\"></i> Alta usuario</a>
+            <a href=\"/usuarios/alta\" class=\"btn btn-primary\"><i class=\"bi bi-file-earmark-plus\"></i> Alta usuario</a>
             ";
+
     }
+
+
+
 }

@@ -1,2 +1,9 @@
 hola:hello
 adios:bye
+letra:Letter
+numero:Number
+planta:Floor
+placeholderletra:Insert the letter...
+placeholdernumero:Insert the number...
+placeholderplanta:Insert the floor...
+title_aula:Classroom management

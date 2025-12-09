@@ -1,89 +1,106 @@
 <?php
-// SOLO añade esto al principio
-session_start();
 
-class Template
-{
-    private $templateDir;
-
-    public function __construct($templateDir = 'tpl')
+    class Template
     {
-        $this->templateDir = rtrim($templateDir, '/');
-    }
 
-    public function render($file, $vars = [])
-    {
-        $path = "{$this->templateDir}/{$file}.tpl";
-
-        if (!file_exists($path))
-            throw new Exception("La plantilla {$file} no existe en {$this->templateDir}");
-
-        $contenido = file_get_contents($path);
-
-        foreach ($vars as $key => $value) {
-            $contenido = preg_replace('/{{\s*' . preg_quote($key, '/') . '\s*}}/', htmlspecialchars($value), $contenido);
+        public function __construct($templateDir='tpl')
+        {
+            $this->templateDir = rtrim($templateDir,'/');
         }
 
-        return $contenido;
-    }
+        public function render($file,$vars = [])
+        {
+            $path = "{$this->templateDir}/{$file}.tpl";
 
-    static function header($titulo, $descripcion = '', $author = '1DAW')
-    {
-        $template = new Template();
+            if (!file_exists($path))
+                throw new Exception("La plantilla {$file} no existe en {$this->templateDir}");
 
-        return $template->render('header', [
-            'titulo'      => $titulo,
-            'description' => $descripcion,
-            'author'      => $author
-        ]);
-    }
+            $contenido = file_get_contents($path);
+            
 
-    static function nav()
-    {
-        $template = new Template();
 
-        return $template->render('navegacion', [
-            'portfolio' => Idioma::lit('portfolio'),
-            'acercade'  => Idioma::lit('acercade'),
-            'contacto'  => Idioma::lit('contacto'),
-            'usuarios'  => Idioma::lit('usuarios'),
-            'calendario' => Idioma::lit('calendario'),
-            'login' => Idioma::lit('login')
-        ]);
-    }
+            foreach($vars as $key => $value)
+            {
+                $contenido = preg_replace('/{{\s*'. preg_quote($key,'/') .'\s*}}/', htmlspecialchars($value),$contenido );
+            }
 
-    static function footer()
-    {
-        $template = new Template();
-        return $template->render('footer');
-    }
-
-    static function seccion($seccion)
-    {
-        switch ($seccion) {
-            case 'usuarios':
-                $contenido = UsuarioController::pintar();
-                break;
-            case 'calendario':
-                $contenido = CalendarioController::pintar();
-                break;
-            case 'login':
-                $contenido = LoginController::pintar();
-                break;
-            default:
-                $contenido = PortadaController::pintar();
-                break;
+            return $contenido;
         }
 
-        return $contenido;
-    }
+        
+        
 
-    static function navegacion($total_registros, $pagina)
-    {
-        $pagina_siguiente = ($total_registros == LISTADO_TOTAL_POR_PAGINA) ?  "<li class=\"page-item\"><a class=\"page-link\" href=\"/usuarios/{$pagina}\">Siguiente</a></li>" : '';
-        $pagina_anterior  = ($pagina != 1) ? "<li class=\"page-item\"><a class=\"page-link\" href=\"/usuarios/" . ($pagina - 2) . "\">Anterior</a></li>" : '';
+        static function header($titulo,$descripcion='',$author='1DAW')
+        {
+            $template = new Template();
 
-        return "
+            return $template->render('header',[
+                'titulo'      => $titulo
+               ,'description' => $descripcion
+               ,'author'      => $author
+            ]);
+
+        }
+
+
+        static function nav()
+        {
+
+            $template = new Template();
+
+            return $template->render('navegacion',[
+                'portfolio' => Idioma::lit('portfolio')
+               ,'acercade'  => Idioma::lit('acercade')
+               ,'contacto'  => Idioma::lit('contacto')
+               ,'usuarios'  => Idioma::lit('usuarios')
+               ,'aula'      => Idioma::lit('aula')
+            ]);
+
+        }
+
+
+        static function footer(){
+            
+            $template = new Template();
+
+            return $template->render('footer');
+
+        }
+
+
+        static function seccion($seccion)
+        {
+
+            switch($seccion)
+            {
+                case 'usuarios':
+                    $contenido = UsuarioController::pintar();
+                break;
+
+                case 'calendario':
+                    $contenido = CalendarioController::pintar();
+                break;
+
+                case 'aula':
+                    $contenido = AulaController::pintar();
+                break;
+
+                default:
+                    $contenido = PortadaController::pintar();
+                break;
+            }
+
+            return $contenido;
+
+
+        }
+
+        static function navegacion($total_registros, $pagina)
+        {
+            $pagina_siguiente = ($total_registros == LISTADO_TOTAL_POR_PAGINA)?  "<li class=\"page-item\"><a class=\"page-link\" href=\"/usuarios/{$pagina}\">Siguiente</a></li>" : '';
+            $pagina_anterior  = ($pagina != 1)? "<li class=\"page-item\"><a class=\"page-link\" href=\"/usuarios/". ($pagina-2) ."\">Anterior</a></li>" : '';
+
+            return "
                 <nav>
                     <ul class=\"pagination\">
                         {$pagina_anterior}
@@ -91,5 +108,9 @@ class Template
                     </ul>
                 </nav>
             ";
+
+
+
+        }
+
     }
-}
