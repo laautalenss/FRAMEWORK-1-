@@ -4,6 +4,8 @@ CREATE TABLE cursos (
     nombre_grado    VARCHAR(50) NOT NULL,           # Ej: "DAW", "SMR"
     curso_numero    INT NOT NULL,                   # Ej: 1, 2
     letra           CHAR(1) NOT NULL,               # Ej: 'A'
+    id_tutor    INT NULL, 
+    FOREIGN KEY (id_tutor) REFERENCES personas(id),
     UNIQUE(nombre_grado, curso_numero, letra),
 
     # DATOS AUDITORÍA
@@ -18,8 +20,8 @@ CREATE TABLE cursos (
 # #############################
 # 2.2 CURSOS
 # #############################
-INSERT INTO cursos (id, nombre_grado, curso_numero, letra, usuario_alta, ip_alta) VALUES
-(1, 'DAW', 1, 'A', 'ADMIN', '127.0.0.1'),
-(2, 'DAW', 2, 'A', 'ADMIN', '127.0.0.1'),
-(3, 'SMR', 1, 'A', 'ADMIN', '127.0.0.1'),
-(4, 'SMR', 2, 'A', 'ADMIN', '127.0.0.1');
+INSERT INTO cursos (id, nombre_grado, curso_numero, letra, id_tutor, usuario_alta, ip_alta) VALUES
+(1, 'DAW', 1, 'A', 1, 'ADMIN', '127.0.0.1'),
+(2, 'DAW', 2, 'A', 2, 'ADMIN', '127.0.0.1'),
+(3, 'SMR', 1, 'A', 3, 'ADMIN', '127.0.0.1'),
+(4, 'SMR', 2, 'A', 4, 'ADMIN', '127.0.0.1');

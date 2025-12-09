@@ -1,9 +1,9 @@
 <?php
-class ISBN extends Elemento
+class Letra extends Elemento
 {
     function __construct($datos=[])
     {
-        $datos['type'] = 'text'; // o 'number' si quieres solo dígitos
+        $datos['type'] = 'text'; 
         
         parent::__construct($datos);
     }
@@ -14,17 +14,20 @@ class ISBN extends Elemento
     {
         $valor = Campo::val($this->nombre);
 
-        // Patrón ISBN 10 o 13
-        $patron_isbn = "/^(97[89][-]?)?\d{1,5}[-]?\d{1,7}[-]?\d{1,7}[-]?(\d|X)$/"; //Mantener el guion opcional para mejor legibilidad tanto en 10 como en 13 dígitos
+        $patron_letra = "/^[DI]$/"; 
+        //$patron_letra = "/^(97[89][-]?)?\d{1,5}[-]?\d{1,7}[-]?\d{1,7}[-]?(\d|X)$/"; 
 
         if (empty($valor)) {
             $this->error = true;
             $this->literal_error = "<span class='error'>" . Idioma::lit('valor_obligatorio') . "</span>";
             Formulario::$numero_errores++;
-        } elseif (!preg_match($patron_isbn, $valor)) {
+        } elseif (!preg_match($patron_letra, $valor)) {
             $this->error = true;
-            $this->literal_error = "<span class='error'>" . Idioma::lit('isbn_invalido') . "</span>";
+            $this->literal_error = "<span class='error'>" . Idioma::lit('letra_invalido') . "</span>";
             Formulario::$numero_errores++;
         }
     }
 }
+
+
+//self::$letra     = new Letra(['nombre' => 'letra']); //D o I 

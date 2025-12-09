@@ -47,6 +47,9 @@ spl_autoload_register(function ($class) {
         case 'HorarioController':
             require_once "includes/paginas/horario.controller.php";
         break;
+        case 'AulaController':
+            require_once "includes/paginas/aula.controller.php";
+        break;
         case 'Campo':
             require_once "includes/campo.php";
         break;
@@ -59,14 +62,20 @@ spl_autoload_register(function ($class) {
         case 'Password':
             require_once "includes/elementos/password.php";
         break;
-        case 'Hidden':
-            require_once "includes/elementos/hidden.php";
-        break;
         case 'IEmail':
             require_once "includes/elementos/iemail.php";
         break;
-        case 'ISBN':
-            require_once "includes/elementos/ISBN.php";
+        case 'Hidden':
+            require_once "includes/elementos/hidden.php";
+        break;
+        case 'Planta':
+            require_once "includes/elementos/planta.php";
+        break;
+        case 'Letra':
+            require_once "includes/elementos/letra.php";
+        break;
+        case 'Number':
+            require_once "includes/elementos/number.php";
         break;
         case 'Formulario':
             require_once "includes/formulario.php";
@@ -77,12 +86,13 @@ spl_autoload_register(function ($class) {
         case 'Usuario':
                 require_once "includes/modelos/usuario.php";
         break;
-        case 'Libro':
-            require_once "includes/modelos/libro.php";
-        break;
         case 'Horario':
             require_once "includes/modelos/horario.php";
         break;
+        case 'Aula':
+            require_once "includes/modelos/aula.php";
+        break;
+
 
 
     }

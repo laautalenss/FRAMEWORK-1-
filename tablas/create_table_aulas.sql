@@ -20,7 +20,7 @@ CREATE TABLE aulas(
 # 2.1 AULAS
 # #############################
 INSERT INTO aulas (id, nombre, letra, numero, planta, usuario_alta, ip_alta) VALUES
-(1, 'Aula Informática 1', 'A', 101, 'P', 'ADMIN', '127.0.0.1'), # Para 1 DAW
-(2, 'Aula Informática 2', 'B', 102, 'P', 'ADMIN', '127.0.0.1'), # Para 2 DAW
-(3, 'Taller Hardware 1', 'C', 201, 'S', 'ADMIN', '127.0.0.1'),  # Para 1 SMR
+(1, 'Aula Informática 1', 'D', 101, 'P', 'ADMIN', '127.0.0.1'), # Para 1 DAW
+(2, 'Aula Informática 2', 'I', 102, 'P', 'ADMIN', '127.0.0.1'), # Para 2 DAW
+(3, 'Taller Hardware 1', 'I', 201, 'S', 'ADMIN', '127.0.0.1'),  # Para 1 SMR
 (4, 'Taller Redes 1', 'D', 202, 'S', 'ADMIN', '127.0.0.1');     # Para 2 SMR

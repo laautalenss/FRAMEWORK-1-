@@ -60,6 +60,7 @@
                ,'usuarios'  => Idioma::lit('usuarios')
                ,'libros'    => Idioma::lit('libros')
                ,'horarios'  => Idioma::lit('horarios')
+               ,'aulas'     => Idioma::lit('aulas')
                ,'FAQ'       => Idioma::lit('FAQ')
                ,'porfolio'  => Idioma::lit('porfolio')
 
@@ -95,6 +96,10 @@
 
                 case 'horarios':
                     $contenido = HorarioController::pintar();
+                break;
+
+                case 'aulas':
+                    $contenido = AulaController::pintar();
                 break;
 
                 case 'about':
@@ -170,6 +175,22 @@
                 </ul>
             </nav>
         ";
+
+}
+
+static function navegacion_aulas($total_registros, $pagina)
+{
+    $pagina_siguiente = ($total_registros == LISTADO_TOTAL_POR_PAGINA)?  "<li class=\"page-item\"><a class=\"page-link\" href=\"/aulas/{$pagina}\">Siguiente</a></li>" : '';
+    $pagina_anterior  = ($pagina != 1)? "<li class=\"page-item\"><a class=\"page-link\" href=\"/aulas/". ($pagina-2) ."\">Anterior</a></li>" : '';
+
+    return "
+        <nav>
+            <ul class=\"pagination\">
+                {$pagina_anterior}
+                {$pagina_siguiente}
+            </ul>
+        </nav>
+    ";
 
 }
 

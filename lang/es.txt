@@ -57,3 +57,12 @@ placeholderfecha_publicacion:Inserta una fecha de publicacion...
 
 horarios:Horarios
 horario del centro educativo:Horario del centro educativo
+
+numero_invalido:Número inválido
+letra_invalido:Letra inválida
+planta_invalido:Planta inválida
+
+numero:Número
+letra:Letra
+planta:Planta
+aulas:Aulas

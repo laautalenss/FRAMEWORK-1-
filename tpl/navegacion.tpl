@@ -24,12 +24,13 @@
                     <a class="nav-link" href="/usuarios/">{{ usuarios }}</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/libros/">{{ libros }}</a>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/horarios/">{{ horarios }}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/aulas/">{{ aulas }}</a>
                 </li>
 
                 <!-- Otros enlaces -->
